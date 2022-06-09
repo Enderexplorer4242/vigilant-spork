@@ -220,7 +220,7 @@ public class Main
 		    System.out.println("If you want to actually get a derivative or integral, go to the below link");
 		    System.out.println("https://www.wolframalpha.com/");
 		    System.out.println("You can also check out the documentation in the code, or go to github where I uploaded this for some reason");
-		    System.out.println("");
+		    System.out.println("https://github.com/Enderexplorer4242/vigilant-spork");
 		    System.out.println("Anyways, you have to restart the program at this point, since I didn't code in a loop to allow you to go back");
 		    System.out.println("If you want an actually good program I made last year, check out my cards program");
 		    System.out.println("https://onlinegdb.com/XXuVOSOhXd");
