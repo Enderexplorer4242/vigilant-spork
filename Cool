@@ -1,0 +1,253 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("WELCOME!");
+		System.out.println("TO THE COOL MATH PROGRAM BY PETER CARILLION");
+		System.out.println(":)");
+		System.out.println();
+		System.out.println();
+		System.out.println("Do you want this in English or in Apache? (true/false)");
+		boolean isEnglish = input.nextBoolean();
+		if(isEnglish == true)
+		{
+		System.out.println("Please select an option");
+		System.out.println("Equation (e)");
+		System.out.println("About (a)");
+		System.out.println("Credits (c)");
+		}
+		else
+		{
+		    System.out.println("Habi/tiile' ha/tini");
+		    System.out.println("Hotagi (e)");
+		    System.out.println("Shaa (a)");
+		    System.out.println("Baa dajili (c)");
+		}
+		String firstAnswer = input.next();
+		if(firstAnswer.equals("e"))
+		{
+		    if(isEnglish == true)
+		    {
+		System.out.println("Please enter an equation. Do not use '*' or '/' or this program will laugh at you and then crash");
+		System.out.println("Also don't do 'e' or 'log' or 'ln' or anything that isn't a number, '+', '-', or the 3 basic trig functions, not inverse ones");
+		System.out.println("Also no spaces");
+		System.out.println("Actually don't do the trig functions they don't work");
+		    }
+		    else
+		    {
+		        System.out.println("Ha'ahiikahle' hotagi. Dah itah aile' '*' dayuhi '/' dagohii nagont/'ogi baa dadloh nkegonyaa hik'e i/k'idaizdlaad");
+		        System.out.println("Hik'e dah itah aile' 'e' dayuhi 'log' dayuhi 'ln' dayuhi dadzaani dah hotagi, '+', '-'");
+		        System.out.println("Hik'e dah ik'e'an");
+		    }
+		String equationPart = input.next();
+		boolean isDerive = true;
+		int thePain = -3;
+		int part = 0;
+		ArrayList<Integer> expLocations = new ArrayList<Integer>();
+		ArrayList<Integer> plusLocations = new ArrayList<Integer>();
+		String copyCat = equationPart;
+		if(equationPart.contains("*") == true || equationPart.contains("/") == true)
+		{
+		    if(isEnglish == true)
+		    {
+		    System.out.println("Bro you actually did that, lol");
+		    }
+		    else
+		    {
+		        System.out.println("Shik'isn anadat'ii/");
+		    }
+		    System.out.println("HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHA");
+		    int crasher =  1 / 0;
+		}
+		if(isEnglish == true)
+		{
+		System.out.println("Ok, so do you want to derive, or integrate? (d/i)");
+		}
+		else
+		{
+		    System.out.println("Godzis dayuhi i/ts'a' idits'ag? (d/i)");
+		}
+		String answer = input.next();
+		if(answer.equals("d"))
+		{
+		    isDerive = true;
+		}
+		else
+		{
+		    isDerive = false;
+		}
+		if(isDerive == true && equationPart.contains("x") == false)
+		{
+		    System.out.println("0");
+		    if(isEnglish)
+		    {
+		    System.out.println("Truthfully, there should be an easier way of doing this, but this code barely works. So I actually have to crash it here or it won't compile");
+		    }
+		    else
+		    {
+		        System.out.println("Dandiigo, le'at'eehi doo nyee da ashne', dat'ee nagont/'ogi dah ba nada'iidziid. i/k'idaizdlaag.");
+		    }
+		    int wackyCrash = 1 / 0;
+		}
+		else if(isDerive == false && equationPart.contains("x") == false)
+		{
+		    System.out.println(equationPart + "x+c");
+		    if(isEnglish)
+		    {
+		    System.out.println("Truthfully, there should be an easier way of doing this, but this code barely works. So I actually have to crash it here or it won't compile");
+		}
+		    else
+		    {
+		        System.out.println("Dandiigo, le'at'eehi doo nyee da ashne', dat'ee nagont/'ogi dah ba nada'iidziid. i/k'idaizdlaag.");
+		    }
+		    int coolCrash = 1 / 0;
+		}
+		String combinedEquation = "";
+		String exponentStr = "";
+		double exponentNum = 0;
+		String equationBig = "";
+		double equationNum = 0;
+		for(int l = 0; l < equationPart.length(); l++)//I spent a good amount of time trying to figure out what the issue was. Turns out, I did > instead of <. The worst part is that I always do that mistake.
+		{
+		    if(equationPart.codePointAt(l) == 94)
+		    {
+		        expLocations.add(l);
+		        //System.out.println("increments");
+		    }
+		    else if(equationPart.codePointAt(l) == 45 || equationPart.codePointAt(l) == 43)
+		    {
+		        plusLocations.add(l);
+		    }
+		}
+		//System.out.println(expLocations.size());
+		if(expLocations.size() == 0 || equationPart.codePointAt(equationPart.length() - 2) != 94)
+		{
+		    equationPart += "^1";
+		    //System.out.println("PLEASE WORK");
+		    expLocations.add(equationPart.length() - 2);
+		}
+		for(int h = 0; h < expLocations.size(); h++)
+		{
+		    if(h == 0)
+		    {
+		        part = expLocations.get(h);
+		    }
+		    else
+		    {
+		part = expLocations.get(h) - (thePain + 1);
+		    }
+		//System.out.println(part);
+		if(h == expLocations.size() - 1 && h != 0)//IDK what this means
+		    {
+		        exponentStr = equationPart.substring(part);
+		    }
+		    else
+		    {
+		exponentStr = equationPart.substring(part + 1, part + 2);
+		    }
+		    //if(exponentStr.codePointAt(0) == 94)
+		   /* {
+		        exponentStr = exponentStr.substring(0, 1);
+		    }*/
+		//System.out.println(exponentStr + "<--- THIS ONE");
+		/*It's funny and all to say you don't know how your code works
+		But I genuinlly have no idea how this part works*/
+		exponentNum = Double.parseDouble(exponentStr);
+		//System.out.println(exponentNum + "Cool");
+	    equationBig = equationPart.substring(0, equationPart.indexOf("x"));
+	   // System.out.println(equationBig + "yeah");
+		equationNum = Double.parseDouble(equationBig);
+		//System.out.println(equationNum + " epic");
+		if(isDerive == true)
+		{
+		    equationNum *= exponentNum;
+		exponentNum--;
+		if(exponentNum == 1)//I could convert them back to int, or I could retain my will to live
+		{
+		    combinedEquation += equationNum + "x";
+		}
+		else if(exponentNum == 0)
+		{
+		    combinedEquation += equationNum;
+		}
+		else
+		{
+		    combinedEquation += equationNum + "x^" + exponentNum;
+		}
+		}
+		else if(isDerive == false)
+		{
+		    exponentNum++;
+		combinedEquation += equationNum + "x^" + exponentNum + "/" + (exponentNum + 1);
+		}
+		/*System.out.println(h + "<-- SHOULD NOT INCREMENT");
+		System.out.println(expLocations.get(h));
+		System.out.println(expLocations.size());*/
+		if(h != expLocations.size() - 1 && plusLocations.size() != 0)
+		{
+		    combinedEquation += equationPart.substring(plusLocations.get(h), plusLocations.get(h) + 1);
+		thePain = equationPart.substring(plusLocations.get(h) + 1).length() - 1;
+		equationPart = equationPart.substring(plusLocations.get(h) + 1);
+		}
+		//System.out.println(equationPart);
+		/*else
+		{
+		    System.out.println("You have to answer the question with either 'd' for derive, or 'i' for integrate. I could create a loop so that if you mistype you can just retry, but I'm not going to do that. So this'll now crash");
+		    int epicCrasher = 1 / 0;
+		}*/
+		}
+		if(isDerive == false)
+		{
+		    combinedEquation += "+c";
+		}
+		System.out.println(combinedEquation);
+		}
+		/*else if(firstAnswer.equals("t"))
+		{
+		    
+		}*/
+		else if(firstAnswer.equals("a"))
+		{
+		    if(isEnglish)
+		    {
+		    System.out.println("This program was made for my Calculus Final Project.");
+		    System.out.println("It isn't really good or robust or anything, but it is pretty fancy so you gotta give it that");
+		    System.out.println("Originally, I planned on making this on a TI calculator, but I didn't know TI BASIC, so I gave up on that");
+		    System.out.println("I also planned on adding trig functions, but that became too complicated to work");
+		    System.out.println("Realistically, I would be able to add a lot of stuff, but it became very hard to get working, so I gave up on that");
+		    System.out.println("If I had spent more time on this, I probably would be able to get a lot more done, but oh well :)");
+		    System.out.println("If you want to actually get a derivative or integral, go to the below link");
+		    System.out.println("https://www.wolframalpha.com/");
+		    System.out.println("You can also check out the documentation in the code, or go to github where I uploaded this for some reason");
+		    System.out.println("");
+		    System.out.println("Anyways, you have to restart the program at this point, since I didn't code in a loop to allow you to go back");
+		    System.out.println("If you want an actually good program I made last year, check out my cards program");
+		    System.out.println("https://onlinegdb.com/XXuVOSOhXd");
+		    System.out.println("Anyways, happy deriving/integration!");
+		    }
+		    else
+		    {
+		        System.out.println("Nagont/'ogi anish/aa hotagi bangonaa ni'.");
+		        System.out.println("Dah n/t'eehi, dayuhi daba'odlohe.");
+		        System.out.println("Anish/aa TI Calculator, dat'ee dah nigonsih TI BASIC.");
+		        System.out.println("Da'o/shii ndaa biyati'. Dah bee k'e'eshchii dabigha.");
+		    }
+		}
+		else
+		{
+		    if(isEnglish)
+		    {
+		    System.out.println("Made by Enderexplorer");//I changed my name so that it isn't public
+		    }
+		    else
+		    {
+		        System.out.println("Agolzaa Enderexplorer");
+		    }
+		}
+	}
+}
+
+
+
+
